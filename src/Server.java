@@ -10,7 +10,7 @@ import javax.swing.*;
 
 import java.io.*;
 
-public class Server extends JFrame implements ActionListener {
+public class Server extends JPanel implements ActionListener {
 
 	//	Identifies all variables
 
@@ -28,19 +28,24 @@ public class Server extends JFrame implements ActionListener {
 	private static Socket clientSocket;
 	private static JTextArea Text;
 	private static JScrollPane ChatOutput;
+	private static JPanel panel;
+	
+	public Server(){
+		
+	}
 
 	public Server(String name) {
 
-		super(Messages.getString("Server.0")); //$NON-NLS-1$
+		
 
 		out = null;
 		in = null;
 		USERN = name;
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JPanel panel = new JPanel();
+		
+		panel = new JPanel();
 		setSize(500, 240);
-		setResizable(false);
+		
 
 		Send = new JButton(Messages.getString("Server.1")); //$NON-NLS-1$
 		Send.setFont(new Font(Messages.getString("Server.2"), Font.BOLD, 16)); //$NON-NLS-1$
@@ -68,7 +73,7 @@ public class Server extends JFrame implements ActionListener {
 		ChatBox.setEnabled(false);
 
 		panel.setOpaque(false);
-		setContentPane(panel);
+		
 
 		panel.add(YourIP);
 		panel.add(DisplayIP);
@@ -81,7 +86,7 @@ public class Server extends JFrame implements ActionListener {
 		Send.addActionListener(this);
 		Done.addActionListener(this);
 
-		this.setContentPane(panel);
+		
 		this.setVisible(true);
 
 		CHAT();
@@ -105,7 +110,7 @@ public class Server extends JFrame implements ActionListener {
 
 			try {
 
-				serverSocket = new ServerSocket(10007);
+				serverSocket = new ServerSocket(80);
 
 			} catch (IOException e) {
 				System.err.println(Messages.getString("Server.9")); //$NON-NLS-1$
@@ -195,12 +200,13 @@ public class Server extends JFrame implements ActionListener {
 		}
 
 	}
-
-	public static void main(String[] args) {
-
-		new Server(Messages.getString("Server.20"));
-
+	
+	public JPanel returnPanel() {
+		new Server("Server");
+		return (panel);
 	}
+
+
 
 }
 

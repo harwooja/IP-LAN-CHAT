@@ -18,10 +18,16 @@ public class Client extends JFrame implements ActionListener {
 	private static BufferedReader in;
 	private static JTextArea Text;
 	private static JScrollPane ChatOutput;
+	private static JPanel panel;
 
+	public Client() {
+		
+		
+	}
+	
 	public Client(String name) {
 
-		super("Chatty - Client");
+		
 
 		cSocket = null;
 		out = null;
@@ -33,7 +39,7 @@ public class Client extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Creates new panel
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 
 		// Sets size
 		setSize(500, 240);
@@ -175,7 +181,7 @@ public class Client extends JFrame implements ActionListener {
 		} 
 		
 		
-		System.out.println("HEY!!!");
+	
 
 	}
 
@@ -198,6 +204,11 @@ public class Client extends JFrame implements ActionListener {
 
 		}
 
+	}
+	
+	public JPanel returnPanel() {
+		new Client("Client");
+		return (panel);
 	}
 
 	public static void main(String[] args) {
